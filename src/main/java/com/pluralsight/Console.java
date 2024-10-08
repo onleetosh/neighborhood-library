@@ -18,27 +18,24 @@ public class Console {
 
     public static boolean PromptForYesNo(String prompt){
         System.out.print(prompt + " ( Y for Yes, N for No ) ?");
-        String userinput = scanner.nextLine();
-
-        return
-                (
-                        userinput.equalsIgnoreCase("Y")
-                                ||
-                                userinput.equalsIgnoreCase("YES")
-                );
+        String userInput = scanner.nextLine();
+        return ( userInput.equalsIgnoreCase("Y") || userInput.equalsIgnoreCase("YES"));
 
     }
 
     public static short PromptForShort(String prompt){
         System.out.print(prompt);
-        short userinput = scanner.nextShort();
-        scanner.nextLine();
-        return  userinput;
+        short userInput = scanner.nextShort();
+        scanner.nextLine(); //takes the data from the cursor up to the CRLF then return the data and throws away the CRLF
+        return  userInput;
     }
 
     public static byte PromptForByte(String prompt){
         System.out.print(prompt);
-        byte userinput =scanner.nextByte();
-        return userinput;
+        byte userInput =scanner.nextByte();
+        return userInput;
     }
+
+
+
 }
