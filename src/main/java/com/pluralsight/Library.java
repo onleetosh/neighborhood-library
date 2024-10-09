@@ -10,23 +10,23 @@ public class Library {
     //assign the variable Catalog with elements by calling on a method
     Catalog = InitializeCollectionOfManga();
 
-    char option;
-    //create a loop constructor to continue prompting user command
+    char userChoice;
+    //create a loop constructor to continue prompting user input
     do{
-        option = PromptMainChoices();
+        userChoice = PromptMainChoices();
         //if user enter A call methods to show available volumes and start check out process
-        if(option == 'A'){
+        if(userChoice == 'A'){
             Book[] availableVolumes = ShowAvailableVolumes(Catalog);
             DisplayVolumes(availableVolumes);
             checkOutVolume(availableVolumes);
         }
         //if user enter C call methods to show volumes checked out and start check in process
-        else if(option == 'C'){
+        else if(userChoice == 'C'){
             Book[] checkedOutVolumes = ShowCheckedOutVolumes(Catalog);
             DisplayVolumes(checkedOutVolumes);
             checkInVolume(checkedOutVolumes);
         }
-    } while (option != 'X'); //will loop as long as user does not enter a Quit command
+    } while (userChoice != 'X'); //will loop as long as user does not enter a Quit command
 }
 
 //method used to take an array of Book objects and return to the array of available volumes
@@ -63,7 +63,7 @@ public static Book[] ShowCheckedOutVolumes(Book[] volumes){
     return results;
 }
 
-//create a method that gives user several options
+//method designed to show options and  prompt user for input
 public static char PromptMainChoices(){
     System.out.println("\nWelcome to \"Manga Catalog,\" a sub-session of the Library! How can I help you?");
     System.out.println("\t\tShow [A]vailable Manga \n\t\tShow [C]hecked Out Manga \n\t\tE[X]it Manga catalog");
@@ -90,7 +90,7 @@ public static char PromptMainChoices(){
 
 }
 
-//create a method to handle the process of returning a volume by calling elements from an array of volumes unavailable
+//method designed to handle the process of returning a volume by calling elements from an array of volumes unavailable
 public static void checkInVolume(Book[] unavailableVolumes){
     //prompt user and store response in a boolean variable
     boolean want = Console.PromptForYesNo("Checking in a book today?");
@@ -99,7 +99,7 @@ public static void checkInVolume(Book[] unavailableVolumes){
     if (want) {
         do {
             userInput = Console.PromptForString("Enter ID # of the manga you wish to check in or X to exit: ");
-            //user entered quit therefore return to main window
+            //user input quit therefore return to main window
             if (userInput.equalsIgnoreCase("X")
                     || userInput.equalsIgnoreCase("EXIT")
                     || userInput.equalsIgnoreCase("Q")
@@ -107,7 +107,7 @@ public static void checkInVolume(Book[] unavailableVolumes){
                 break;
             }
 
-            //user entered ID therefore start check in process
+            //user input a ID number therefore start check in process
             else {
                 int idNumber = Integer.parseInt(userInput); //convert # String to integer
                 boolean isVolumeCheckedIn = false; //is manga checked in? Set to false
@@ -127,7 +127,7 @@ public static void checkInVolume(Book[] unavailableVolumes){
     }
 }
 
-//create a method to handle the process of checking out a volume by calling elements from an array of volumes available.
+//method designed to handle the process of checking out a volume by calling elements from an array of volumes available.
 public static void checkOutVolume(Book[] availableVolumes){
     //declare variables to store user input data
     boolean want = Console.PromptForYesNo("Checking out a volume today?");
@@ -163,7 +163,7 @@ public static void checkOutVolume(Book[] availableVolumes){
         } while (true);
     }
 }
-//method created to display array of Volumes using a 'for-each' loop and format column size
+//method designed to display array of Volumes using a 'for-each' loop and format column size
 public static void DisplayVolumes(Book[] volumes){
     System.out.printf("%5s %55s %20s %24s\n" , "ID", "TITLE", "ISBN", "CHECKOUT OUT TO" );
     System.out.println("-----------------------------------------------------------------------------------------------------------");
@@ -171,7 +171,7 @@ public static void DisplayVolumes(Book[] volumes){
         System.out.printf("%5s %55s %20s %24s\n", volume.getID(), volume.getTitle(), volume.getISBN(), volume.getCheckedOutTo());
     }
 }
-//method created to initialize a collection of Manga as an array
+//method designed to initialize a collection of Manga as an array
 public static Book[] InitializeCollectionOfManga(){
         //declare a library with 20 elements
         Book[ ] library = new Book[20];

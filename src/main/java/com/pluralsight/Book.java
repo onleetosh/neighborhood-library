@@ -9,7 +9,7 @@ public class Book {
     private boolean isCheckedOut;
     private String checkedOutTo;
 
-    //create a constructor 'Book' to initialize objects when being defined
+    //constructor ('Book') designed to initialize objects when defining an element (ex. a book)
     public Book(int id, String isbn, String title) {
         //define variables
         this.id = id;
@@ -21,7 +21,7 @@ public class Book {
  }
 
     @Override
-    //method used to build and output a String
+    //method designed to build and output a String
     public String toString() {
         return "Book{" +  "id=" + id +
                 ", isbn='" + isbn + '\'' +
@@ -45,7 +45,7 @@ public class Book {
     public void setCheckedOut(boolean isCheckedOut) { this.isCheckedOut = isCheckedOut; }
     public void setCheckedOutTo(String checkedOutTo) { this.checkedOutTo = checkedOutTo; }
 
-    //create a method to handle check-out of book with no return value
+    //method designed as void(no return value) to handle check-out of book
     public void checkOut(String name) {
         if (!isCheckedOut) {
             this.isCheckedOut = true;
@@ -56,7 +56,7 @@ public class Book {
         }
     }
 
-    //create a method to handle check-in process with no return value
+    //method designed as void(no return value) to handle check-in process
     public void checkIn() {
         if (isCheckedOut) {
             this.isCheckedOut = false;
